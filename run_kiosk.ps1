@@ -1,14 +1,13 @@
-# Check if running as administrator
+# Launch Firefox Kiosk
+# This script launches the Firefox kiosk application with admin privileges
+
 if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-    Write-Warning "This script requires administrator privileges. Requesting elevation..."
-    Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
+    Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File "C:\Users\dmas\OpacKiosk\deploy_kiosk.ps1"" -Verb RunAs
     Exit
 }
 
-Write-Host "Starting Firefox Kiosk..." -ForegroundColor Green
+$scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
+Set-Location $scriptPath
 
-# Set execution policy to allow running the script
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
-
-# Run the kiosk application
-& python firefox_kiosk.py 
+# Launch with -y flag for auto-accept
+python firefox_kiosk_simple.py -y
