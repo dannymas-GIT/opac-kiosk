@@ -1,0 +1,13 @@
+{
+    "admin_password": "kiosk1234",
+    "allow_back": true,
+    "allow_home": true,
+    "allowed_domains": [],
+    "check_updates": true,
+    "firefox_path": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+    "fullscreen": true,
+    "homepage": "https://westbabylon-suffc.na.iiivega.com/",
+    "kiosk_title": "Firefox Kiosk",
+    "refresh_interval": 30,
+    "update_check_interval": 24
+}
